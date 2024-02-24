@@ -41,6 +41,7 @@
             text-align: center;
             font-size: larger;
             color: rgb(0, 0, 130);
+            z-index: 1000;
         }
         div{
             position: absolute;
@@ -57,12 +58,12 @@
     </style>
 </head>
 <body>
-    <span id="intro">
+    <span id="intro" onclick="window.open('game.html')">
         wx:i0413t <br>
-        qq(不常在线):3291920900 <br>
+        点我可直接前往游戏 <br>
         Made By ttx <br>
     </span>
-    <span class="tt">你好,填空白无效</span>
+    <span class="tt">你好,勿填空白</span>
     <div>
         <input type="text" placeholder="你的名字(随便怎么填)" id="name"><br>
         <input type="text" placeholder="你的赏金码(没有要求)" id="password"><br>

@@ -13,9 +13,11 @@ var hp;
 var interval;
 var t,t2;
 var Player;
+var difficulty;
 const fd = document.getElementById("fd");
 const los = document.getElementById("lose");
 const dis = document.getElementById("disappear");
+const changkuang = document.getElementById("changkuang");
 var onlineMode = confirm("需要赏金版请点确认,仅娱乐请点取消");
 
 window.onload = function(){
@@ -49,17 +51,23 @@ window.onload = function(){
 };
 
 function startGame(){
-	drawPannel();
-	initGame();
+	document.getElementsByTagName("span")[0].innerHTML = "游戏将在";
+	document.getElementsByTagName("span")[1].innerHTML = "5秒后开始";
+	setTimeout(function(){
+		drawPannel();
+		initGame();
+	},5000);
+
 }
 function initGame(){
 	time = 0;
 	points = 0;
-	hp = 3;
+	hp = 5;
 	interval = 100;
+	reDifficult();
 	document.getElementsByTagName("span")[0].innerHTML = "SCORE:"+points;
-	document.getElementsByTagName("span")[1].innerHTML = "HP:"+hp;
-	document.getElementsByTagName("span")[2].innerHTML = "Level:"+interval;
+	document.getElementsByTagName("span")[1].innerHTML = "❤️:"+hp;
+	document.getElementsByTagName("span")[2].innerHTML = "Level:"+difficulty;
 	t = setInterval(function(){
 		generateRats();
 		maintanceRats();
@@ -99,12 +107,14 @@ function chosen(rat){
 		points ++;
 		document.getElementsByTagName("span")[0].innerHTML = "SCORE:"+points;
 		interval -= interval*0.03>2?interval*0.03:interval*0.015;
-		document.getElementsByTagName("span")[2].innerHTML = "Level:"+interval;
+		reDifficult();
+		document.getElementsByTagName("span")[2].innerHTML = "Level:"+difficulty;
 	}
 }
 function generateRats(){//产生地鼠的方法
 	if(parseInt(Math.random()*100)%parseInt(((interval/12)>2?(interval/12):2))==0){
-		document.getElementsByTagName("span")[2].innerHTML = "Level:"+interval;
+		reDifficult();
+		document.getElementsByTagName("span")[2].innerHTML = "Level:"+difficulty;
 		var ID = Math.ceil(Math.random()*8);
 		if(rats[ID].className == ""){
 			t2 = setTimeout(function(){
@@ -123,8 +133,9 @@ function maintanceRats(){
 			dis.play();
 			hp --;//掉血
 			interval *= 1.2;//回退一点游戏难度
-			document.getElementsByTagName("span")[2].innerHTML = "Level:"+interval;
-			document.getElementsByTagName("span")[1].innerHTML = "HP:"+hp;
+			reDifficult();
+			document.getElementsByTagName("span")[2].innerHTML = "Level:"+difficulty;
+			document.getElementsByTagName("span")[1].innerHTML = "❤️:"+hp;
 			if(hp == 0){
 				lose();
                 los.play();
@@ -132,12 +143,26 @@ function maintanceRats(){
 		}
 	}
 }
+function reDifficult(){
+	if (interval>120){difficulty = "死人"}
+	if (interval>=100&&interval<120){difficulty = "残疾人"}
+	if (interval>=80&&interval<100){difficulty = "废物"}
+	if (interval>=60&&interval<80){difficulty = "正常人"}
+	if (interval>=50&&interval<60){difficulty = "博尔特"}
+	if (interval>=40&&interval<50){difficulty = "飞雷神";changkuang.play();}
+	if (interval>=30&&interval<40){difficulty = "三个字:统统推倒"}
+	if (interval>=20&&interval<30){difficulty = "猖狂"}
+	if (interval>=10&&interval<20){difficulty = "鸡"}
+	if (interval<10){difficulty = "小心死亡"}
+}
 function lose(){//如果输了
+	changkuang.pause();
 	clearInterval(t);//停止计时器，等待游戏重新开始
 	clearTimeout(t2);
+	reDifficult();
 	setTimeout(function(){
         if (onlineMode){
-            var save = confirm( Player+"在"+interval+"的难度(Level,越小越难)下打了"+points+"个捣蛋鬼。是否需要提交并上榜?");
+            var save = confirm( Player+"在"+ difficulty +"的难度下打了"+points+"个捣蛋鬼。是否需要提交并上榜?");
             if (save){
 				send();
                 alert("你的数据已上传!将在12小时内被记录!");
@@ -145,7 +170,7 @@ function lose(){//如果输了
                     rats[i].classList.remove("active");
                 }
                 setTimeout(function(){
-                    initGame();
+                    startGameGame();
                 },500);
             }else{
                 alert("菜,就多练");
@@ -153,16 +178,16 @@ function lose(){//如果输了
                     rats[i].classList.remove("active");
                 }
                 setTimeout(function(){
-                    initGame();
+                    startGame();
                 },500);
             }
         }else{
-            alert("你在"+interval+"的难度(Level,越小越难)下打了"+points+"个捣蛋鬼。");
+            alert("你在"+difficulty+"的难度下打了"+points+"个捣蛋鬼。");
             for(var i=0;i<rats.length;i++){
                 rats[i].classList.remove("active");
             }
             setTimeout(function(){
-                initGame();
+                startGame();
             },500);
         }
 	},10);
@@ -172,7 +197,7 @@ function send() {
 	$.post('https://apis.tianapi.com/robot/index',
 		{
 			key:'868ffe977d3b445b541e7e28acb51e41',
-			question:'S---'+ Player + " " + points + " " + interval
+			question:'S---'+ Player + " " + points + " " + difficulty
 		}
 	)
 }

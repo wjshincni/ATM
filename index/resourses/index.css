@@ -84,7 +84,7 @@ div{
     transform: scale(0.1);
     -webkit-transform: scale(0.1);
 }
-#ttx{
+.ttx{
     position: fixed;
     left:20%;
     bottom : 0;
