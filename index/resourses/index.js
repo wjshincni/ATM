@@ -27,7 +27,13 @@ window.onload = function(){
                 startGame();
 				Player = "大聪明";
             },500);
-        }else{
+        }else if(input == 123){
+			alert("欢迎狗弟!");
+			setTimeout (function(){
+				startGame();
+				Player = "狗弟";
+			},500);
+		}else{
             alert("错误!请稍后再试");
             setTimeout (function(){
                 startGame();
