@@ -145,10 +145,10 @@ function maintanceRats(){
 }
 function reDifficult(){
 	if (interval>120){difficulty = "死人"}
-	if (interval>=100&&interval<120){difficulty = "残疾人"}
-	if (interval>=80&&interval<100){difficulty = "废物"}
-	if (interval>=60&&interval<80){difficulty = "正常人"}
-	if (interval>=50&&interval<60){difficulty = "博尔特"}
+	if (interval>=100&&interval<120){difficulty = "残疾人";changkuang.pause();}
+	if (interval>=80&&interval<100){difficulty = "废物";changkuang.pause();}
+	if (interval>=60&&interval<80){difficulty = "正常人";changkuang.pause();}
+	if (interval>=50&&interval<60){difficulty = "博尔特";changkuang.pause();}
 	if (interval>=40&&interval<50){difficulty = "飞雷神";changkuang.play();}
 	if (interval>=30&&interval<40){difficulty = "三个字:统统推倒"}
 	if (interval>=20&&interval<30){difficulty = "猖狂"}
