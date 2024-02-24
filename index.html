@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主页 捣蛋鬼开导弹 By ttx</title>
+    <link rel="icon" href="index/resourses/icon.png">
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    html,body{
+        height: 100%;
+        background-color: coral;
+        align-items: center;
+    }
+    button{
+        position: absolute;
+        left: 32%;
+        width: 150px;
+        height: 90px;
+        margin-bottom: 10%;
+        border: 5px solid cadetblue;
+        border-radius: 5px;
+        text-shadow: 2px 2px 2px gold;
+        transition: 300ms ease;
+    }
+    button:hover{
+        box-shadow: 10px 10px 10px 0px white;
+    }
+    button:active{
+        width: 135px;
+        height: 81px;
+        left: calc(32% + 7.5px);
+    }
+    .btn1{
+        bottom: 20%;
+        background-color: wheat;
+        color: green;
+
+    }
+    .btn2{
+        bottom: 40%;
+        background-color: gold;
+        color: blueviolet;
+    }
+    @font-face {
+        font-family: ttx;
+        src: url(index/resourses/gamefont.ttf);
+    }
+    div{
+        font-size: 30px;
+        font-family: ttx;
+        position: absolute;
+        top: 10%;
+        left: 14%;
+        color: white;
+        text-shadow: 5px 5px 5px black;
+    }
+</style>
+<body>
+    <div>
+        <span>捣蛋鬼开导弹 By ttx</span><br>
+        <a onclick="window.open('index/preview.html','_blank')" style="color: darkturquoise;font-size: large;">点我观看游戏预览</a>
+    </div>
+    <button class="btn1" onclick="window.open('index/game.html','_blank')">前往游戏</button>
+    <button class="btn2" onclick="window.open('index/instruction.html','blank')">前往注册赏金码</button>
+</body>
+</html>

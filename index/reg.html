@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册 捣蛋鬼开导弹 By ttx</title>
+    <link rel="icon" href="resourses/icon.png">
+    <script src="resourses/jq.min.js"></script>
+    <style>
+        @keyframes goin {
+            0%{opacity: 0;top: 60%;}
+            50%{opacity: 0.5;top: 30%;}
+            100%{opacity: 1;top: 10%;}
+        }
+        @font-face {
+            font-family: ttx;
+            src: url(resourses/gamefont.ttf);
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            font-family: ttx;
+            height: 100%;
+            background-color: lightpink;
+        }
+        .tt{
+            font-size: 50px;
+            position: absolute;
+            top: 10%;
+            animation: goin 1s 500ms;
+            color: cadetblue;
+        }
+        .checkbox{
+            font-size: 20px;
+            color: cadetblue;
+        }
+        #intro{
+            position: fixed;
+            text-align: center;
+            font-size: larger;
+            color: rgb(0, 0, 130);
+        }
+        div{
+            position: absolute;
+            top: 30%;
+            width: 80%;
+            margin-left: 10%;
+            margin-right: 10%;
+            text-align: center;
+            justify-content: center;
+        }
+        input{
+            margin-top: 10%;
+        }
+    </style>
+</head>
+<body>
+    <span id="intro">
+        wx:i0413t <br>
+        qq(不常在线):3291920900 <br>
+        Made By ttx <br>
+    </span>
+    <span class="tt">你好,填空白无效</span>
+    <div>
+        <input type="text" placeholder="你的名字(随便怎么填)" id="name"><br>
+        <input type="text" placeholder="你的赏金码(没有要求)" id="password"><br>
+        <input type="checkbox" id="noBounty"><span class="checkbox" onclick="check()">我想要上榜,但不需要赏金</span><br>
+        <input type="image" onclick="send()" src="resourses/sendReg.png"><br>
+        <span>点一下ttx的偶像,就给你注册</span>
+    </div>
+    <script>
+        function send() {
+            var name;
+            var password;
+            var noBounty;
+            var Rname = document.getElementById('name');
+            var Rpassword = document.getElementById('password');
+            var RnoBounty = document.getElementById('noBounty');
+            name = Rname.value;
+            password = Rpassword.value;
+            if (RnoBounty.checked){
+                noBounty = "不需要赏金,但需要上榜";
+            }else{
+                noBounty = "正常注册";
+            }
+            if (name == "大聪明"||name == "狗弟"){
+                alert("重名了,换个名字")
+            }else if (password == "56789"||name == "123"){
+                alert("该赏金码被占用,换个码")
+            }else{
+                var sure = confirm('请确认你的信息: 名字:' + name + ' 赏金码:' + password + ' 其他要求:' + noBounty,'');
+                if (sure){
+                    $.post('https://apis.tianapi.com/robot/index',
+                    {
+                        key:'868ffe977d3b445b541e7e28acb51e41',
+                        question:'R---' + name + ' ' + password + ' ' + noBounty,
+                    });
+                    if (noBounty == "不需要赏金,但需要上榜"){
+                        alert('提交成功!12小时内通过ttx审核后将会允许在游戏内使用赏金码登录')
+                    }else{
+                        alert('提交成功!12小时内通过ttx审核后将会允许在游戏内使用赏金码登录,请留意微信号i0413t的好友申请,以便加注赏金池!')
+                    }
+                    Rname.value = "";
+                    Rpassword.value = "";
+                    RnoBounty.checked = false;
+                    name = null;
+                    password = null;
+                    noBounty = null;
+                    sure = null;
+                }
+            }
+        }
+        function check(){
+            var noBounty = document.getElementById('noBounty');
+            noBounty.checked = true;
+        }
+    </script>
+</body>
+</html>
