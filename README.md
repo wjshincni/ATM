@@ -1,2 +1,2 @@
 # ATM
-An android game.
+A web game.
