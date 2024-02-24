@@ -64,7 +64,7 @@ function drawPannel(){
 			var img = new Image();
 			img.src = "resourses/ds.png";
 			img.style.left = i*33.33 + "%";
-			img.style.top = j*0.3333*canvas.clientHeight + "px";
+			img.style.top = j*0.3*canvas.clientHeight + "px";
 			img.addEventListener("mousedown",clicked);
 			img.addEventListener('touchstart', touched);
 			document.getElementsByTagName("div")[0].appendChild(img);
@@ -132,7 +132,7 @@ function lose(){//如果输了
             var save = confirm( Player+"在"+interval+"的难度(Level,越小越难)下打了"+points+"个捣蛋鬼。是否需要提交并上榜?");
             if (save){
 				send();
-                alert("你的数据将在12小时内被上榜!");
+                alert("你的数据已上传!将在12小时内被记录!");
                 for(var i=0;i<rats.length;i++){
                     rats[i].classList.remove("active");
                 }

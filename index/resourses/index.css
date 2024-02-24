@@ -28,7 +28,7 @@ span{
 h3{
     position: fixed;
 	font-size: 14px;
-    z-index: 99999;
+    z-index: -1;
     bottom: 0;
     right: 0;
     font-family: gameFont ,'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -36,8 +36,9 @@ h3{
     align-items: center;
 }
 p{
-    margin:0;
+    margin: 0;
     font-size: 14px;
+    padding: 0;
 }
 p[B = no]{
     color: blue;
