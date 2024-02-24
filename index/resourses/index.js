@@ -170,7 +170,7 @@ function lose(){//如果输了
                     rats[i].classList.remove("active");
                 }
                 setTimeout(function(){
-                    startGameGame();
+                    startGame();
                 },500);
             }else{
                 alert("菜,就多练");
