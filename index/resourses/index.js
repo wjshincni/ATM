@@ -20,7 +20,7 @@ var onlineMode = confirm("需要赏金版请点确认,仅娱乐请点取消");
 
 window.onload = function(){
     if (onlineMode){
-        var input = prompt("请输入你的赏金码如:88888","");
+        var input = prompt("请输入你的赏金码如:88888","请输入你的赏金码如:88888");
         if(input == 56789){
             alert("欢迎大聪明!");
             setTimeout (function(){
@@ -31,7 +31,9 @@ window.onload = function(){
             alert("错误!请稍后再试");
             setTimeout (function(){
                 startGame();
+				onlineMode = false;
             },500);
+
         }
     }else{
         setTimeout (function(){
