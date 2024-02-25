@@ -24,10 +24,10 @@ window.onload = function(){
     if (onlineMode){
         var input = prompt("请输入你的赏金码如:88888","请输入你的赏金码如:88888");
         if(input == 56789){
-            alert("欢迎大聪明!");
+            alert("欢迎狗哥!");
             setTimeout (function(){
                 startGame();
-				Player = "大聪明";
+				Player = "狗哥";
             },500);
         }else if(input == 123){
 			alert("欢迎狗弟!");
