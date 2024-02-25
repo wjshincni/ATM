@@ -6,6 +6,14 @@ html,body{
     margin: 0;
 }
 *::selection{appearance: none;}
+a{appearance: none;}
+a{
+    text-shadow: 10px 0px 50px red;
+    color: orange;
+}
+a:hover{
+    cursor: grab;
+}
 html::-webkit-scrollbar {visibility: hidden;}
 body {
 	text-align: center;

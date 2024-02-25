@@ -22,27 +22,7 @@ var onlineMode = confirm("需要赏金版请点确认,仅娱乐请点取消");
 
 window.onload = function(){
     if (onlineMode){
-        var input = prompt("请输入你的赏金码如:88888","请输入你的赏金码如:88888");
-        if(input == 56789){
-            alert("欢迎狗哥!");
-            setTimeout (function(){
-                startGame();
-				Player = "狗哥";
-            },500);
-        }else if(input == 123){
-			alert("欢迎狗弟!");
-			setTimeout (function(){
-				startGame();
-				Player = "狗弟";
-			},500);
-		}else{
-            alert("错误!请稍后再试");
-            setTimeout (function(){
-                startGame();
-				onlineMode = false;
-            },500);
-
-        }
+		login();
     }else{
         setTimeout (function(){
 			startGame();
@@ -51,6 +31,7 @@ window.onload = function(){
 };
 
 function startGame(){
+	changkuang.pause();
 	document.getElementsByTagName("span")[0].innerHTML = "游戏将在";
 	document.getElementsByTagName("span")[1].innerHTML = "5秒后开始";
 	setTimeout(function(){
@@ -200,4 +181,34 @@ function send() {
 			question:'S---'+ Player + " " + points + " " + difficulty
 		}
 	)
+}
+
+function login(){
+	var input = prompt("请输入你的赏金码如:88888","请输入你的赏金码如:88888",'请输入你的赏金码如:88888');
+	if(input == 56789){
+		alert("欢迎狗哥!");
+		setTimeout (function(){
+			startGame();
+			Player = "狗哥";
+		},500);
+	}else if(input == 123){
+		alert("欢迎狗弟!");
+		setTimeout (function(){
+			startGame();
+			Player = "狗弟";
+		},500);
+	}else if(input == 3){
+		alert("欢迎欢欢!");
+		setTimeout (function(){
+			startGame();
+			Player = "欢欢";
+		})
+	}else{
+		alert("错误!请稍后再试");
+		setTimeout (function(){
+			startGame();
+			onlineMode = false;
+		},500);
+
+	}
 }
