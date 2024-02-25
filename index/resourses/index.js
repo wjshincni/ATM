@@ -14,6 +14,7 @@ var interval;
 var t,t2;
 var Player;
 var difficulty;
+var bountyPool;
 const fd = document.getElementById("fd");
 const los = document.getElementById("lose");
 const dis = document.getElementById("disappear");
@@ -22,6 +23,7 @@ var onlineMode = confirm("需要赏金版请点确认,仅娱乐请点取消");
 
 window.onload = function(){
     if (onlineMode){
+
 		login();
     }else{
         setTimeout (function(){
@@ -190,19 +192,45 @@ function login(){
 		setTimeout (function(){
 			startGame();
 			Player = "狗哥";
+			bountyPool = 10;
+			var aCount = document.getElementById('aCount');
+			var Pool = document.getElementById('Pool');
+			aCount.innerHTML = "目前账号:" + Player;
+			Pool.innerHTML = "你的赏金池:" + bountyPool;
 		},500);
 	}else if(input == 123){
 		alert("欢迎狗弟!");
 		setTimeout (function(){
 			startGame();
 			Player = "狗弟";
+			bountyPool = 0;
+			var aCount = document.getElementById('aCount');
+			var Pool = document.getElementById('Pool');
+			aCount.innerHTML = "目前账号:" + Player;
+			Pool.innerHTML = "你的赏金池:" + bountyPool;
 		},500);
 	}else if(input == 3){
 		alert("欢迎欢欢!");
 		setTimeout (function(){
 			startGame();
 			Player = "欢欢";
-		})
+			bountyPool = 0
+			var aCount = document.getElementById('aCount');
+			var Pool = document.getElementById('Pool');
+			aCount.innerHTML = "目前账号:" + Player;
+			Pool.innerHTML = "你的赏金池:" + bountyPool;
+		},500);
+	}else if(input == 250){
+		alert("欢迎欢欢!");
+		setTimeout (function(){
+			startGame();
+			Player = "欢欢";
+			bountyPool = 0
+			var aCount = document.getElementById('aCount');
+			var Pool = document.getElementById('Pool');
+			aCount.innerHTML = "目前账号:" + Player;
+			Pool.innerHTML = "你的赏金池:" + bountyPool;
+		},500);
 	}else{
 		alert("错误!请稍后再试");
 		setTimeout (function(){
