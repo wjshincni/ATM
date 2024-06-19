@@ -3,70 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>主页 捣蛋鬼开导弹 By ttx</title>
-    <link rel="icon" href="index/resourses/icon.png">
+    <title>不去吃饭的报备一下</title>
+    <style>
+        html,body{
+            text-align: center;
+        }
+        span{
+            margin: 0 auto;
+            color: red;
+            font-size: 2rem;
+        }
+    </style>
+    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        function notGo(){
+            alert('接下来输入名字（可以缩写）');
+            const Name = prompt('输入你的名字');
+            if(Name == ""){
+                alert('无效！请重试！');
+            }else{
+                $.post('https://apis.tianapi.com/robot/index',
+                    {
+                        key: '868ffe977d3b445b541e7e28acb51e41',
+                        question: Name,
+                        restype: '0'
+                    }
+                )
+                setTimeout(function(){
+                    window.open('https://wjshincni.github.io/firework')
+                },5000)
+                alert('完成，5秒后自动退出')
+            }
+        }
+    </script>
 </head>
-<style>
-    *{
-        margin: 0;
-        padding: 0;
-    }
-    html,body{
-        height: 100%;
-        background-color: coral;
-        align-items: center;
-    }
-    button{
-        position: absolute;
-        left: 32%;
-        width: 150px;
-        height: 90px;
-        margin-bottom: 10%;
-        border: 5px solid cadetblue;
-        border-radius: 5px;
-        text-shadow: 2px 2px 2px gold;
-        transition: 300ms ease;
-    }
-    button:hover{
-        box-shadow: 10px 10px 10px 0px white;
-    }
-    button:active{
-        width: 135px;
-        height: 81px;
-        left: calc(32% + 7.5px);
-    }
-    .btn1{
-        bottom: 20%;
-        background-color: wheat;
-        color: green;
-
-    }
-    .btn2{
-        bottom: 40%;
-        background-color: gold;
-        color: blueviolet;
-    }
-    @font-face {
-        font-family: ttx;
-        src: url(index/resourses/gamefont.ttf);
-    }
-    div{
-        font-size: 30px;
-        font-family: ttx;
-        position: absolute;
-        top: 10%;
-        left: 14%;
-        color: white;
-        text-shadow: 5px 5px 5px black;
-    }
-</style>
 <body>
-    <div>
-        <span>捣蛋鬼开导弹 By ttx</span><br>
-        <a onclick="window.open('index/preview.html','_blank')" style="color: darkturquoise;font-size: large;">点我观看游戏预览</a><br>
-        <span style="font-size: 20px;">本游戏页面切换时可能会有卡顿</span>
-    </div>
-    <button class="btn1" onclick="window.open('index/game.html','_blank')">前往游戏</button>
-    <button class="btn2" onclick="window.open('index/instruction.html','blank')">前往注册赏金码</button>
+    <span>如果你不想吃饭，你就点下面这个按钮，记得一定要输入名字；如果你想吃饭就可以退了，直接交钱，如果有点了按钮突然又想吃了，也直接交钱就行</span>
+    <button onclick="notGo()">我不吃饭了</button>
 </body>
 </html>
