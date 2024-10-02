@@ -66,8 +66,7 @@
     <span class="tt">你好,勿填空白</span>
     <div>
         <input type="text" placeholder="你的名字(随便怎么填)" id="name"><br>
-        <input type="text" placeholder="你的赏金码(没有要求)" id="password"><br>
-        <input type="checkbox" id="noBounty"><span class="checkbox" onclick="check()">我想要上榜,但不需要赏金</span><br>
+        <input type="text" placeholder="你的牛逼之码(没有要求)" id="password"><br>
         <input type="image" onclick="send()" src="resourses/sendReg.png"><br>
         <span>点一下ttx的偶像,就给你注册</span>
     </div>
@@ -75,17 +74,10 @@
         function send() {
             var name;
             var password;
-            var noBounty;
             var Rname = document.getElementById('name');
             var Rpassword = document.getElementById('password');
-            var RnoBounty = document.getElementById('noBounty');
             name = Rname.value;
             password = Rpassword.value;
-            if (RnoBounty.checked){
-                noBounty = "不需要赏金,但需要上榜";
-            }else{
-                noBounty = "正常注册";
-            }
             if (name == "狗哥"||name == "狗弟"|| name == "欢欢"||name == "小戴戴"){
                 alert("重名了,换个名字")
             }else if (password == "56789"||password == "123"||password == "3"||password == "250"){
@@ -98,24 +90,14 @@
                         key:'868ffe977d3b445b541e7e28acb51e41',
                         question:'R---' + name + ' ' + password + ' ' + noBounty,
                     });
-                    if (noBounty == "不需要赏金,但需要上榜"){
-                        alert('提交成功!12小时内通过ttx审核后将会允许在游戏内使用赏金码登录')
-                    }else{
-                        alert('提交成功!12小时内通过ttx审核后将会允许在游戏内使用赏金码登录,请加ttx微信i0413t,以便加注赏金池!')
-                    }
+                    alert('提交成功!12小时内通过ttx审核后将会允许在游戏内使用赏金码登录,请加ttx微信i0413t,以便拿马内')
                     Rname.value = "";
                     Rpassword.value = "";
-                    RnoBounty.checked = false;
                     name = null;
                     password = null;
-                    noBounty = null;
                     sure = null;
                 }
             }
-        }
-        function check(){
-            var noBounty = document.getElementById('noBounty');
-            noBounty.checked = true;
         }
     </script>
 </body>

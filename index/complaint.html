@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="resourses/icon.png">
+    <title>举报/申诉 捣蛋鬼开导弹 By ttx</title>
+    <script src="resourses/jq.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            background-color: bisque;
+            height: 100%;
+        }
+        input{
+            border: double 5px lightcoral;
+            margin-left: 15%;
+            margin-top: 10%;
+        }
+        input[type=text]{
+            width: 70%;
+            background-color: lightgreen;
+        }
+        input[type=textarea]{
+            width: 70%;
+            height: 20%;
+            background-color: lightgreen;
+        }
+        .homePage{
+            color: cadetblue;
+        }
+        button{
+            position: fixed;
+            left: 32%;
+            width: 150px;
+            height: 90px;
+            bottom: 0;
+            border: 5px solid cadetblue;
+            border-radius: 5px;
+            text-shadow: 2px 2px 2px gold;
+            transition: 300ms ease;
+        }
+        button:hover{
+            box-shadow: 10px 10px 10px 0px white;
+        }
+        button:active{
+            width: 135px;
+            height: 81px;
+            left: calc(32% + 7.5px);
+        }
+    </style>
+</head>
+<body>
+    <h1>申诉/投诉</h1> <h3 onclick="window.open('../index.html')" class="homePage">返回主页</h3>
+    <hr>
+    <input type="text" id="name" placeholder="账号名 如:狗弟 如果没有可以不填">
+    <br>
+    <input type="radio" name="comp" id="compA">账号(不能登录,不能注册,不能排行)的问题
+    <br>
+    <input type="radio" name="comp" id="compB">BUG
+    <br>
+    <input type="textarea" id="prob" placeholder="你遇到的问题详情">
+    <br>
+    <button onclick="send()">提交问题</button>
+</body>
+<script>
+    function send(){
+        var name = document.getElementById('name');
+        var compA = document.getElementById('compA');
+        var compB = document.getElementById('compB');
+        var prob = document.getElementById('prob');
+        var a = name.value;
+        var b;
+        var d = prob.value;
+        var can = true;
+        if (compA.checked){b = "AccountProblems";c = ""}
+        else if (compB.checked){b = "";c = "BUGs"}
+        else{alert('请选择问题类别!')}
+        if (d == ""){alert('你倒是填问题详情啊,让我上传个吉吉啊?');can = false}
+        if (can){
+            $.post('https://apis.tianapi.com/robot/index',
+                {
+                    key:'868ffe977d3b445b541e7e28acb51e41',
+                    question:'P---' + 'name:' + a + ' ' + 'type:' + b + c + ' ' + 'details:' + d
+                });
+            setTimeout (function(){
+                alert('你的申诉提交成功!将在12小时内受理');
+            },500);
+        }
+
+    }
+</script>
+</html>

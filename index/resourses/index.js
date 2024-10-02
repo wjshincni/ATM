@@ -13,17 +13,22 @@ var hp;
 var interval;
 var t,t2;
 var Player;
+const FirstName = "狗哥",
+	FirstScore = 138,
+ 	SecondName = "狗弟",
+	SecondScore = 121,
+ 	ThirdName = "欢欢",
+	ThirdScore = 68;
 var difficulty;
 var bountyPool;
 const fd = document.getElementById("fd");
 const los = document.getElementById("lose");
 const dis = document.getElementById("disappear");
 const changkuang = document.getElementById("changkuang");
-var onlineMode = confirm("需要赏金版请点确认,仅娱乐请点取消");
+var onlineMode = confirm("需要排行请点确认,仅娱乐请点取消");
 
 window.onload = function(){
     if (onlineMode){
-
 		login();
     }else{
         setTimeout (function(){
@@ -36,6 +41,9 @@ function startGame(){
 	changkuang.pause();
 	document.getElementsByTagName("span")[0].innerHTML = "游戏将在";
 	document.getElementsByTagName("span")[1].innerHTML = "5秒后开始";
+	document.getElementById("First").innerHTML = "1." + FirstName + " " + FirstScore + "分";
+	document.getElementById("Second").innerHTML = "2." + SecondName + " " + SecondScore + "分";
+	document.getElementById("Third").innerHTML = "3." + ThirdName + " " + ThirdScore + "分";
 	setTimeout(function(){
 		drawPannel();
 		initGame();
@@ -145,7 +153,7 @@ function lose(){//如果输了
 	reDifficult();
 	setTimeout(function(){
         if (onlineMode){
-            var save = confirm( Player+"在"+ difficulty +"的难度下打了"+points+"个捣蛋鬼。是否需要提交并上榜?");
+            var save = confirm( Player+"在"+ difficulty +"的难度下打了"+points+"个捣蛋鬼。是否需要提交并记录上榜?");
             if (save){
 				send();
                 alert("你的数据已上传!将在12小时内被记录!");
